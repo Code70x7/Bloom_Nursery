@@ -1,0 +1,703 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Calibri, Helvetica, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background-color: #f0f0f0;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.top {
+    background: url('imgs/leavesBackground.jpg') no-repeat;
+    background-size: cover;
+    width: 100%;
+}
+
+.navbar {
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px;
+
+}
+
+h1 {
+    color: #003d36;
+    padding-bottom: 50px;
+    text-align: center;
+    font-size: 60px;
+    text-shadow:
+        -1px -1px 15px rgba(148, 186, 159, 0.3),
+        1px -1px 15px rgba(148, 186, 159, 0.3),
+        -1px 1px 15px rgba(148, 186, 159, 0.3),
+        1px 1px 10px rgba(148, 186, 159, 0.3)
+}
+
+.logo {
+    /* margin-top: 30px;
+    margin-bottom: 20px;
+    display: inline-block; */
+}
+
+h1 {
+    margin-top: 20px;
+}
+
+.logo-container {
+    width: 150px;
+    margin-top: 20px;
+}
+
+.navbar a {
+    text-decoration: none;
+    padding: 0 15px;
+    color: #003d36;
+    font-weight: bold;
+    font-size: 21px;
+
+}
+
+.links {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.navbar a:hover {
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 5px;
+}
+
+/* Hide the hamburger by default on larger screens */
+.hamburger {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Mobile view (max-width: 768px) */
+@media (max-width: 768px) {
+    .navbar .links a {
+        display: none;
+        /* Hide all links */
+
+    }
+
+    .hamburger {
+        display: block;
+        /* Show hamburger icon */
+        color: #003d36;
+        padding: 10px;
+    }
+
+    .navbar.active .links a {
+        display: block;
+        margin: 10px 0;
+        text-align: center;
+
+    }
+
+    .links {
+        background-color: transparent;
+    }
+
+    .navbar {
+        flex-direction: column;
+        /* Stack the links vertically */
+    }
+}
+
+.image-container {
+    display: flex;
+    /* Establish Flexbox layout */
+    justify-content: space-between;
+    /* Distribute space evenly */
+    align-items: center;
+    /* Align items vertically center */
+    padding: 20px;
+    /* Optional: Add padding around the container */
+    max-width: 1200px;
+    /* Optional: Set a max width for larger screens */
+    margin: 30px auto 5px;
+    /* Center the container horizontally */
+}
+
+.responsive-image {
+    width: 30%;
+    /* Each image takes up 30% of the container's width */
+    height: auto;
+    /* Maintain aspect ratio */
+    border-radius: 8px;
+    /* Optional: Add rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Optional: Add a subtle shadow */
+    transition: transform 0.3s;
+    /* Optional: Add a hover effect */
+}
+
+.responsive-image:hover {
+    transform: scale(1.05);
+    /* Slightly enlarge the image on hover */
+}
+
+/* Responsive Design: Adjust layout on smaller screens */
+@media (max-width: 768px) {
+    .image-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .responsive-image {
+        width: 80%;
+        margin-bottom: 20px;
+    }
+}
+
+.button-container {
+    display: flex;
+    /* Use Flexbox in the container */
+    justify-content: center;
+    /* Center horizontally */
+    align-items: center;
+    /* Center vertically */
+    margin-top: 30px;
+
+}
+
+/* Button styles */
+.shop-now-button {
+    background-color: #f0c16e;
+    /* Button color */
+    color: #003d36;
+    /* Text color */
+    padding: 15px 30px;
+    /* Padding inside the button */
+    border: none;
+    /* No border */
+    border-radius: 8px;
+    /* Rounded corners */
+    font-size: 16px;
+    /* Font size */
+    cursor: pointer;
+    /* Pointer cursor on hover */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    /* Hover effects */
+}
+
+.shop-now-button:hover {
+    background-color: #d9a853;
+    /* Darker hover color */
+    transform: scale(1.05);
+    /* Slightly enlarge the button on hover */
+}
+
+.shop-now-button:active {
+    transform: scale(0.98);
+    /* Slightly shrink the button when clicked */
+}
+
+/* Style for the container holding the value boxes */
+.values-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* 4 columns of equal width */
+    gap: 20px;
+    /* Space between the squares */
+    padding: 50px;
+    /* Padding around the container */
+    max-width: 1200px;
+    /* Optional: set a max width */
+    margin: 50px auto;
+    /* Center the container horizontally */
+    background-color: #f9f9f9;
+    /* Optional: background color for the section */
+}
+
+/* Style for each value box */
+.value-box {
+    background-color: rgba(0, 61, 54, 0.8);
+    /* Light green background */
+    border-radius: 8px;
+    /* Rounded corners */
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow for a 3D effect */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+}
+
+.value-box:hover {
+    transform: scale(1.05);
+    /* Enlarge slightly on hover */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+    /* Stronger shadow on hover */
+}
+
+.value-box h3 {
+    font-size: 24px;
+    color: #f0c16e;
+    margin-bottom: 15px;
+}
+
+.value-box p {
+    font-size: 16px;
+    font-family: calibri;
+    font-size: 16px;
+    color: #f0f0f0;
+}
+
+/* Responsive layout: Adjust layout for smaller screens */
+@media (max-width: 1024px) {
+    .values-container {
+        grid-template-columns: repeat(2, 1fr);
+        /* 2 columns on smaller screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .values-container {
+        grid-template-columns: 1fr;
+        /* Stack the boxes in one column on smaller screens */
+    }
+}
+
+/* Shop by Category Section */
+.shop-by-category-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* 2 columns */
+    gap: 20px;
+    /* Space between the categories */
+    padding: 50px;
+    max-width: 800px;
+    /* Adjust as needed */
+    margin: 50px auto;
+    /* Center the container */
+    background-color: rgba(148, 186, 159, 0.5)
+        /* Optional: background color */
+
+}
+
+.category-box {
+    background-color: rgba(0, 61, 54, 0.8);
+    /* Canopy Green with opacity */
+    border-radius: 8px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: #f0f0f0;
+    /* Text color */
+    font-size: 18px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.category-box:hover {
+    transform: scale(1.05);
+    /* Slightly enlarge on hover */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.shop-category-heading {
+    text-align: center;
+    font-size: 36px;
+    color: #003d36;
+    /* Canopy Green */
+    margin-bottom: 30px;
+    font-family: Arial, sans-serif;
+}
+
+/* Responsive layout for Shop by Category */
+@media (max-width: 768px) {
+    .shop-by-category-container {
+        grid-template-columns: 1fr;
+        /* Stack categories on smaller screens */
+    }
+}
+
+.newsletter-container {
+    text-align: center;
+    /* Center text and elements */
+    padding: 40px;
+    /* Padding around the section */
+    background-color: #f9f9f9;
+    /* Optional: background color for the newsletter section */
+    margin: 100px auto;
+    /* Center the container horizontally */
+    max-width: 600px;
+    /* Optional: set a max width */
+    border-radius: 8px;
+    /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow */
+}
+
+.social-media-icons {
+    margin-bottom: 20px;
+    /* Space below the icons */
+}
+
+.social-icon {
+    margin: 0 10px;
+    /* Space between icons */
+    color: #5890FF;
+    /* Icon color */
+    font-size: 24px;
+    /* Icon size */
+    transition: color 0.3s ease;
+    /* Transition for hover effect */
+}
+
+.social-icon:hover {
+    color: #f0c16e;
+    /* Change color on hover */
+}
+
+.newsletter-input {
+    padding: 10px;
+    /* Padding inside the input field */
+    font-size: 16px;
+    /* Font size */
+    width: 80%;
+    /* Width of the input field */
+    max-width: 300px;
+    /* Max width */
+    border: 1px solid #003d36;
+    /* Border color */
+    border-radius: 4px;
+    /* Rounded corners */
+    margin-bottom: 20px;
+    /* Space below the input field */
+}
+
+.subscribe-button {
+    background-color: #f0c16e;
+    /* Button color */
+    color: #003d36;
+    /* Text color */
+    padding: 10px 20px;
+    /* Padding inside the button */
+    border: none;
+    /* No border */
+    border-radius: 8px;
+    /* Rounded corners */
+    font-size: 16px;
+    /* Font size */
+    cursor: pointer;
+    /* Pointer cursor on hover */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    /* Hover effects */
+}
+
+.subscribe-button:hover {
+    background-color: #d9a853;
+    /* Darker hover color */
+    transform: scale(1.05);
+    /* Slightly enlarge the button on hover */
+}
+
+.subscribe-button:active {
+    transform: scale(0.98);
+    /* Slightly shrink the button when clicked */
+}
+
+.signUp {
+    margin-top: 10px;
+}
+
+.footer {
+    background-color: #003d36;
+    ;
+    /* Background color for the footer */
+    padding: 20px 10px;
+    /* Padding around the footer */
+    text-align: center;
+    /* Center the footer text */
+
+}
+
+.footer-links a {
+    padding: 10px;
+    color: #f0f0f0;
+    /* Text color */
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.footer-links a:hover {
+    font-size: 1.1em;
+    /* Make the text slightly bigger on hover */
+    background-color: rgba(255, 255, 255, 0.2);
+    /* Highlight the link with a background color */
+}
+
+/* this is for the Gallery page*/
+
+h2.center {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.view-cart-button {
+    background-color: #f0c16e;
+    color: #003d36;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.view-cart-button:hover {
+    background-color: #d9a853;
+    /* Darker on hover */
+}
+
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* 4 products in a row */
+    gap: 20px;
+    /* Space between products */
+    padding: 20px;
+    max-width: 1200px;
+    /* Max width of the gallery */
+    margin: 0 auto;
+    /* Center the gallery */
+}
+
+.product-card {
+    background-color: #fff;
+    /* White background for product cards */
+    border-radius: 8px;
+    /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow */
+    text-align: center;
+    /* Center text in the card */
+    padding: 20px;
+    /* Padding inside cards */
+}
+
+.product-image {
+    width: 100%;
+    /* Responsive image */
+    height: auto;
+    /* Maintain aspect ratio */
+    border-radius: 8px;
+    /* Rounded corners for images */
+}
+
+.add-to-cart-button {
+    background-color: #f0c16e;
+    color: #003d36;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+    /* Space above the button */
+}
+
+.add-to-cart-button:hover {
+    background-color: #d9a853;
+    /* Darker on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .gallery-container {
+        grid-template-columns: repeat(2, 1fr);
+        /* 2 products in a row on smaller screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .gallery-container {
+        grid-template-columns: 1fr;
+        /* 1 product in a row on mobile */
+    }
+}
+
+/*This is the style for the About us page*/
+/* Basic Styles */
+
+.about-us-section p {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 10px;
+    text-align: center;
+    font-size: 18px;
+    color: #003d36;
+}
+
+.business-info-section {
+    display: flex;
+    justify-content: space-around;
+    padding: 30px;
+    background-color: #b5dee3;
+}
+
+.business-info-section h3 {
+    color: #003d36;
+}
+
+.contact-form-section {
+    background-color: #f9f9f9;
+    padding: 20px;
+    max-width: 600px;
+    margin: 30px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form-section form {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-form-section input,
+.contact-form-section textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.contact-form-section button {
+    padding: 10px 20px;
+    background-color: #003d36;
+    color: #f0f0f0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.contact-form-section button:hover {
+    background-color: #006953;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #003d36;
+    color: #f0f0f0;
+}
+
+#custom-order {
+    text-align: left;
+}
+
+/*the blog site*/
+/* Blog Section */
+.blog-section {
+    margin-bottom: 50px;
+}
+
+.blog-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.blog-card {
+    background-color: rgba(148, 186, 159, 0.5);
+    border-radius: 8px;
+    padding: 20px;
+    width: 30%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blog-card h3 {
+    font-size: 24px;
+    color: #003d36;
+}
+
+.blog-card p {
+    font-size: 16px;
+    color: #003d36;
+    margin-bottom: 15px;
+}
+
+.blog-card a {
+    text-decoration: none;
+    color: rgba(0, 61, 54, 0.5);
+    font-weight: bold;
+}
+
+.blog-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Community Involvement Section */
+.community-section {
+    margin-top: 50px;
+}
+
+.community-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.community-card {
+    background-color: rgba(0, 61, 54, 0.8);
+    border-radius: 8px;
+    padding: 20px;
+    width: 80%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: #f0f0f0;
+    text-align: center;
+}
+
+.community-card h3 {
+    color: #f0c16e;
+    margin-bottom: 15px;
+}
+
+.centerTitle {
+    text-align: center;
+    margin: 15px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .blog-row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .blog-card {
+        width: 80%;
+        margin-bottom: 20px;
+    }
+
+    .community-card {
+        width: 100%;
+    }
+}
+
+/*accessability css*/
+nav .marker {
+    display: none;
+}
