@@ -701,3 +701,64 @@ footer {
 nav .marker {
     display: none;
 }
+
+.centerIt {
+    text-align: center;
+    font-size: 2rem;
+}
+
+/* Style for the Clear Cart button */
+#clear-cart {
+    background-color: #f0c16e;
+    /* Sunlit Petal */
+    color: #003d36;
+    /* Canopy Green */
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#clear-cart:hover {
+    background-color: #94ba9f;
+    /* Meadow Mist - hover effect */
+    color: #fff;
+    /* White text on hover */
+}
+
+/* Add some margin or positioning to space it out */
+#clear-cart {
+    margin-top: 20px;
+    display: inline-block;
+}
+
+/* Style for the Checkout button */
+#checkout {
+    background-color: #003d36;
+    /* Canopy Green */
+    color: #f0f0f0;
+    /* Cloudy Gray */
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#checkout:hover {
+    background-color: #b5dee3;
+    /* Sky Bloom - hover effect */
+    color: #003d36;
+    /* Canopy Green text on hover */
+}
+
+/* Add some margin or positioning to space it out */
+#checkout {
+    margin-top: 20px;
+    display: inline-block;
+    margin-left: 10px;
+    /* To add space next to the Clear Cart button */
+}

@@ -1,103 +1,188 @@
+document.addEventListener('DOMContentLoaded', function () {
+    // Hamburger menu functionality
+    const hamburger = document.querySelector('.hamburger');
+    const navbar = document.querySelector('.navbar');
 
-const hamburger = document.querySelector('.hamburger');
-const navbar = document.querySelector('.navbar');
+    hamburger.addEventListener('click', () => {
+        navbar.classList.toggle('active');
+    });
 
-hamburger.addEventListener('click', () => {
-    navbar.classList.toggle('active');
-});
+    // Select the button by its ID for 'Shop Now'
+    const shopNowButton = document.getElementById('shopNowBtn');
 
-// Select the button by its ID
-const shopNowButton = document.getElementById('shopNowBtn');
-
-// Add an event listener to the button
-shopNowButton.addEventListener('click', function () {
-    // Redirect to the gallery page
-    window.location.href = 'gallery.html'; // Update the path to your gallery page
-});
-
-
-
-
-
-//JS for the cart
-// Function to add items to the cart
-function addToCart(item) {
-    const cart = JSON.parse(sessionStorage.getItem('cart')) || [];
-    const existingItem = cart.find(cartItem => cartItem.id === item.id);
-
-    if (existingItem) {
-        existingItem.quantity += 1; // Increment quantity if item already exists
-    } else {
-        cart.push({ ...item, quantity: 1 }); // Add new item with quantity 1
-    }
-
-    sessionStorage.setItem('cart', JSON.stringify(cart));
-    alert(`${item.name} has been added to your cart.`);
-}
-
-// Function to view the cart
-function viewCart() {
-    const cartItems = JSON.parse(sessionStorage.getItem('cart')) || [];
-    const cartList = document.getElementById('cart-items');
-    cartList.innerHTML = ''; // Clear the previous items
-
-    if (cartItems.length === 0) {
-        cartList.innerHTML = '<li>Your cart is empty.</li>';
-    } else {
-        cartItems.forEach(item => {
-            const listItem = document.createElement('li');
-            listItem.textContent = `${item.name} - $${item.price} (Quantity: ${item.quantity})`;
-            cartList.appendChild(listItem);
+    // Check if the shopNowButton exists
+    if (shopNowButton) {
+        shopNowButton.addEventListener('click', function () {
+            window.location.href = 'gallery.html';
         });
+    } else {
+        console.log("Shop Now button not found");
     }
 
-    document.getElementById('cart-modal').style.display = 'block'; // Show cart modal
-}
+    // Function to handle subscription
+    function subscribe() {
+        const emailInput = document.querySelector('.newsletter-input').value;
+        console.log("Email entered:", emailInput);
 
-// Function to clear the cart
-function clearCart() {
-    sessionStorage.removeItem('cart');
-    alert('Your cart has been cleared.');
-}
+        if (emailInput) {
+            alert('Thank you for subscribing!');
+            document.querySelector('.newsletter-input').value = '';
+        } else {
+            alert('Please enter a valid email address.');
+        }
+    }
 
-// Function to handle feedback submission
-function submitFeedback(event) {
-    event.preventDefault(); // Prevent form from submitting normally
-    const name = document.getElementById('name').value;
-    const feedback = document.getElementById('feedback').value;
+    // Event Listener for the subscribe button
+    const subscribeButton = document.querySelector('.subscribe-button');
+    if (subscribeButton) {
+        subscribeButton.addEventListener('click', function () {
+            console.log("Subscribe button clicked!");
+            subscribe();
+        });
+    } else {
+        console.log("Subscribe button not found");
+    }
 
-    const feedbackData = {
-        name,
-        feedback,
-        date: new Date().toISOString()
-    };
+    // Function to display the cart on cart.html page
+    function displayCart() {
+        let cart = JSON.parse(sessionStorage.getItem('cart')) || [];
 
-    // Save feedback to localStorage
-    const feedbackList = JSON.parse(localStorage.getItem('feedbackList')) || [];
-    feedbackList.push(feedbackData);
-    localStorage.setItem('feedbackList', JSON.stringify(feedbackList));
+        const cartItemsContainer = document.getElementById('cart-items');
 
-    alert('Thank you for your feedback!');
-    document.getElementById('feedback-form').reset(); // Reset the form
-}
+        if (!cartItemsContainer) {
+            console.log("Cart items container not found");
+            return;
+        }
 
-// Event Listeners
-document.querySelectorAll('.add-to-cart').forEach(button => {
-    button.addEventListener('click', (event) => {
-        const itemDiv = event.target.closest('.item');
-        const item = {
-            id: itemDiv.getAttribute('data-id'),
-            name: itemDiv.getAttribute('data-name'),
-            price: itemDiv.getAttribute('data-price')
-        };
-        addToCart(item);
+        if (cart.length === 0) {
+            cartItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
+            return;
+        }
+
+        let cartHTML = '<ul>';
+        cart.forEach(item => {
+            cartHTML += `<li><strong>${item.name}</strong>: ${item.description}</li>`;
+        });
+        cartHTML += '</ul>';
+
+        cartItemsContainer.innerHTML = cartHTML;
+    }
+
+    // Function to clear the cart
+    function clearCart() {
+        sessionStorage.removeItem('cart');
+        displayCart();
+    }
+
+    // Display cart on cart.html
+    displayCart();
+
+    // Add event listeners for "Clear Cart" and "Checkout" buttons
+    const clearCartButton = document.getElementById('clear-cart');
+    const checkoutButton = document.getElementById('checkout');
+
+    if (clearCartButton) {
+        clearCartButton.addEventListener('click', clearCart);
+    } else {
+        console.log("Clear Cart button not found");
+    }
+
+    if (checkoutButton) {
+        checkoutButton.addEventListener('click', () => {
+            alert('Proceeding to checkout');
+        });
+    } else {
+        console.log("Checkout button not found");
+    }
+
+    // Add event listeners for "Add to Cart" buttons on gallery.html
+    const addToCartButtons = document.querySelectorAll('.add-to-cart-button');
+    console.log(`Found ${addToCartButtons.length} add-to-cart buttons`);
+
+    addToCartButtons.forEach(button => {
+        button.addEventListener('click', (event) => {
+            const productCard = event.target.closest('.product-card');
+            if (productCard) {
+                const product = {
+                    name: productCard.getAttribute('data-product-name'),
+                    description: productCard.getAttribute('data-product-description')
+                };
+                addToCart(product);
+            } else {
+                console.log("Product card not found");
+            }
+        });
+    });
+
+    // Function to add item to cart and store in session storage
+    function addToCart(product) {
+        // Retrieve the cart from session storage or initialize as empty array
+        let cart = JSON.parse(sessionStorage.getItem('cart')) || [];
+
+        // Add the new product to the cart
+        cart.push(product);
+
+        // Save the updated cart back to session storage
+        sessionStorage.setItem('cart', JSON.stringify(cart));
+
+        // Alert the user that the item has been added
+        alert(`${product.name} has been added to your cart!`);
+    }
+});
+
+// Wait for the DOM to fully load
+document.addEventListener('DOMContentLoaded', () => {
+    // Get the submit button and the form
+    const submitBtn = document.getElementById('submitBtn');
+    const form = document.querySelector('.contact-form-section form');
+
+    // Add an event listener for the form submission
+    form.addEventListener('submit', function (event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        // Show an alert with a thank you message
+        alert("Thank you for your message!");
+
+        // Optionally, you can also clear the form fields after submission
+        form.reset();
     });
 });
 
-document.getElementById('view-cart').addEventListener('click', viewCart);
-document.getElementById('clear-cart').addEventListener('click', clearCart);
-document.getElementById('close-cart').addEventListener('click', () => {
-    document.getElementById('cart-modal').style.display = 'none'; // Close the modal
-});
+//................. form adding to local storage............
+// Wait for the DOM to fully load
+document.addEventListener('DOMContentLoaded', () => {
+    // Get the submit button and the form
+    const form = document.querySelector('.contact-form-section form');
 
-document.getElementById('feedback-form').addEventListener('submit', submitFeedback);
+    // Add an event listener for the form submission
+    form.addEventListener('submit', function (event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        // Gather form data
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const phone = document.getElementById('phone').value;
+        const feedback = document.getElementById('feedback').value;
+        const customOrder = document.getElementById('customOrder').checked;
+
+        // Create an object to hold the data
+        const orderData = {
+            name: name,
+            email: email,
+            phone: phone,
+            feedback: feedback,
+            customOrder: customOrder
+        };
+
+        // Save to local storage
+        let existingOrders = JSON.parse(localStorage.getItem('customOrders')) || [];
+        existingOrders.push(orderData);
+        localStorage.setItem('customOrders', JSON.stringify(existingOrders));
+
+        // Show an alert with a thank you message
+        alert("Thank you for your order request!");
+
+        // Optionally, you can also clear the form fields after submission
+        form.reset();
+    });
+});

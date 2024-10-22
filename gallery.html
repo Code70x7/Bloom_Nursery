@@ -24,6 +24,9 @@
         <a href="aboutUs.html">About</a>
         <a href="blog.html">Blog</a>
         <a href="#"><i class="fa-solid fa-phone"></i></a>
+          <a href="cart.html">
+              <i class="fas fa-shopping-cart"></i> View Cart
+          </a>
           </div>
          <a href="#" class="hamburger"><i class="fa-solid fa-bars"></i></a>
       </nav>
@@ -33,8 +36,8 @@
     <main>
         <h2 class="center">Let's Begin Shopping!</h2>
         <div class="button-container">
-            <button class="view-cart-button">View Cart</button>
-        
+          <a href="cart.html"><button class="view-cart-button">View Cart</button></a>
+          
           <!-- <button id="clear-cart">Clear Cart</button> -->
       </div>
 
@@ -44,57 +47,67 @@
           <ul id="cart-items"></ul>
           <button id="close-cart">Close</button>
       </div>
- -->
-        <div class="gallery-container">
-            <div class="product-card">
-                <img src="imgs/Client1_AloePlant.png" alt="Aloe Plant" class="product-image">
-                <h3>Aloe Plant</h3>
-                <p>Discover the healing benefits of our vibrant Aloe Plant, perfect for adding a touch of greenery to any home.</p>
-                <button class="add-to-cart-button">Add to Cart</button>
-            </div>
-            <div class="product-card">
-                <img src="imgs/Client1_AppleTree.png" alt="Apple Tree" class="product-image">
-                <h3>Apple Tree</h3>
-                <p>Bring home the joy of fresh, homegrown fruit with our Apple Tree! With its stunning blossoms and bountiful harvests, it’s a delightful addition to any garden.</p>
-                <button class="add-to-cart-button">Add to Cart</button>
-            </div>
-            <div class="product-card">
-                <img src="imgs/Client1_BirchTree.png" alt="Birch Tree" class="product-image">
-                <h3>Birch Tree</h3>
-                <p>Enhance your landscape with the striking beauty of our Birch Tree, known for its elegant white bark and delicate leaves. </p>
-                <button class="add-to-cart-button">Add to Cart</button>
-            </div>
-            <div class="product-card">
-                <img src="imgs/Client1_BirdHouse.png" alt="Bird House" class="product-image">
-                <h3>Bird House</h3>
-                <p>Invite feathered friends into your garden with our charming Bird House, designed to provide a safe and cozy nesting spot.</p>
-                <button class="add-to-cart-button">Add to Cart</button>
-            </div>
-            <div class="product-card">
-                <img src="imgs/Client1_MapleTree.png" alt="Maple Tree" class="product-image">
-                <h3>Maple Tree</h3>
-                <p>Celebrated for its stunning fall foliage and graceful branches. Perfect for providing shade and beauty.</p>
-                <button class="add-to-cart-button">Add to Cart</button>
-            </div>
-            <div class="product-card">
-                <img src="imgs/Client1_PottingSoil.png" alt="Potting Soil" class="product-image">
-                <h3>Potting Soil</h3>
-                <p>Achieve gardening success with our premium Potting Soil, specially formulated to nourish your plants and support healthy root growth.</p>
-                <button class="add-to-cart-button">Add to Cart</button>
-            </div>
-            <div class="product-card">
-                <img src="imgs/Client1_SpiderPlant.png" alt="Spider Plant" class="product-image">
-                <h3>Spider Plant</h3>
-                <p>Brighten your indoor space with the lively Spider Plant, known for its air-purifying qualities and easy care.</p>
-                <button class="add-to-cart-button">Add to Cart</button>
-            </div>
-            <div class="product-card">
-                <img src="imgs/Client1_WateringCan.png" alt="Watering Can" class="product-image">
-                <h3>Watering Can</h3>
-                <p>Make plant care a breeze with our stylish and functional Watering Can, designed for precision and ease. </p>
-                <button class="add-to-cart-button">Add to Cart</button>
-            </div>
-        </div>
+ --><div class="cart-container">
+          <!-- Cart items will be dynamically added here -->
+      </div>
+      <div class="gallery-container">
+          <div class="product-card" data-product-name="Aloe Plant" data-product-description="Discover the healing benefits of our vibrant Aloe Plant, perfect for adding a touch of greenery to any home.">
+              <img src="imgs/Client1_AloePlant.png" alt="Aloe Plant" class="product-image">
+              <h3>Aloe Plant</h3>
+              <p>Discover the healing benefits of our vibrant Aloe Plant, perfect for adding a touch of greenery to any home.</p>
+              <button class="add-to-cart-button">Add to Cart</button>
+          </div>
+
+          <div class="product-card" data-product-name="Apple Tree" data-product-description="Bring home the joy of fresh, homegrown fruit with our Apple Tree! With its stunning blossoms and bountiful harvests, it’s a delightful addition to any garden.">
+              <img src="imgs/Client1_AppleTree.png" alt="Apple Tree" class="product-image">
+              <h3>Apple Tree</h3>
+              <p>Bring home the joy of fresh, homegrown fruit with our Apple Tree! With its stunning blossoms and bountiful harvests, it’s a delightful addition to any garden.</p>
+              <button class="add-to-cart-button">Add to Cart</button>
+          </div>
+
+          <div class="product-card" data-product-name="Birch Tree" data-product-description="Enhance your landscape with the striking beauty of our Birch Tree, known for its elegant white bark and delicate leaves.">
+              <img src="imgs/Client1_BirchTree.png" alt="Birch Tree" class="product-image">
+              <h3>Birch Tree</h3>
+              <p>Enhance your landscape with the striking beauty of our Birch Tree, known for its elegant white bark and delicate leaves.</p>
+              <button class="add-to-cart-button">Add to Cart</button>
+          </div>
+
+          <div class="product-card" data-product-name="Bird House" data-product-description="Invite feathered friends into your garden with our charming Bird House, designed to provide a safe and cozy nesting spot.">
+              <img src="imgs/Client1_BirdHouse.png" alt="Bird House" class="product-image">
+              <h3>Bird House</h3>
+              <p>Invite feathered friends into your garden with our charming Bird House, designed to provide a safe and cozy nesting spot.</p>
+              <button class="add-to-cart-button">Add to Cart</button>
+          </div>
+
+          <div class="product-card" data-product-name="Maple Tree" data-product-description="Celebrated for its stunning fall foliage and graceful branches. Perfect for providing shade and beauty.">
+              <img src="imgs/Client1_MapleTree.png" alt="Maple Tree" class="product-image">
+              <h3>Maple Tree</h3>
+              <p>Celebrated for its stunning fall foliage and graceful branches. Perfect for providing shade and beauty.</p>
+              <button class="add-to-cart-button">Add to Cart</button>
+          </div>
+
+          <div class="product-card" data-product-name="Potting Soil" data-product-description="Achieve gardening success with our premium Potting Soil, specially formulated to nourish your plants and support healthy root growth.">
+              <img src="imgs/Client1_PottingSoil.png" alt="Potting Soil" class="product-image">
+              <h3>Potting Soil</h3>
+              <p>Achieve gardening success with our premium Potting Soil, specially formulated to nourish your plants and support healthy root growth.</p>
+              <button class="add-to-cart-button">Add to Cart</button>
+          </div>
+
+          <div class="product-card" data-product-name="Spider Plant" data-product-description="Brighten your indoor space with the lively Spider Plant, known for its air-purifying qualities and easy care.">
+              <img src="imgs/Client1_SpiderPlant.png" alt="Spider Plant" class="product-image">
+              <h3>Spider Plant</h3>
+              <p>Brighten your indoor space with the lively Spider Plant, known for its air-purifying qualities and easy care.</p>
+              <button class="add-to-cart-button">Add to Cart</button>
+          </div>
+
+          <div class="product-card" data-product-name="Watering Can" data-product-description="Make plant care a breeze with our stylish and functional Watering Can, designed for precision and ease.">
+              <img src="imgs/Client1_WateringCan.png" alt="Watering Can" class="product-image">
+              <h3>Watering Can</h3>
+              <p>Make plant care a breeze with our stylish and functional Watering Can, designed for precision and ease.</p>
+              <button class="add-to-cart-button">Add to Cart</button>
+          </div>
+      </div>
+
     </main>
     <div class="newsletter-container">
       <div class="social-media-icons">
